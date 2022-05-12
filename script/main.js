@@ -1,5 +1,27 @@
+import statesAndCapitals from './states.js'
+$("#country").select2();
+$("#state").select2();
+$("#sex").select2();
+$("#LGA").select2();
+
+$.each(statesAndCapitals[0], function (index, value) {
+    // console.log(value)
+    let val = value
+    // console.log(val)
+    $("#state").append(`<option>${index}</option>`)
+
+    $("#state").change(function () {
+        $.each(val, function (i, data) {
+            console.log(data)
+            $("#LGA").append(`<option>${data}</option>`)
+        })
+    })
+
+})
+
+
 $().ready(function () {
-// Validation using validation plugin
+    // Validation using validation plugin
     $("#formEl").validate({
         rules: {
             firstName: {
@@ -39,28 +61,28 @@ $().ready(function () {
             LGA: {
                 required: true,
                 maxlength: 1
-            }  
+            }
         }
     });
 
-// DataTable - Jquery datatable plugin
-   
+    // DataTable - Jquery datatable plugin
+    $('#table_id').DataTable();
 
-    $("#formEl").on("submit", function(ev){
-        ev.preventDefault
-        console.log(firstName)
-        $('#table_id').DataTable({
-            data: [
-               $("#firstName").val()
-            ],
-            'columns': [
-                { data: firstName},
-                { data: 'cell' },
-                { data: 'email' },
-                { data: 'gender' },
-                { data: 'nat' },
-                { data: 'phone' },
-            ],
-        });
+    $("#formEl").on("submit", function (ev) {
+        ev.preventDefault()
+
+        $("#table_body").append(`<tr>
+      <td>${$("#firstName").val()}</td> 
+      <td>${$("#middleName").val()}</td> 
+      <td>${$("#surname").val()}</td>
+      <td>${$("#sex").val()}</td>
+      <td>${$("#DOB").val()}</td>
+      <td>${$("#phoneNum").val()}</td>
+      <td>${$("#country").val()}</td>
+      <td>${$("#state").val()}</td>
+      <td>${$("#LGA").val()}</td>
+    </tr>`)
+
     })
+    $("#formEl").trigger('reset')
 })
