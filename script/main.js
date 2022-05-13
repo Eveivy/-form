@@ -7,7 +7,6 @@ $("#LGA").select2();
 $.each(statesAndCapitals[0], function (index, value) {
     // console.log(value)
     let val = value
-    // console.log(val)
     $("#state").append(`<option>${index}</option>`)
 
     $("#state").change(function () {
@@ -16,7 +15,14 @@ $.each(statesAndCapitals[0], function (index, value) {
             $("#LGA").append(`<option>${data}</option>`)
         })
     })
-
+    // $('#state').change(function() {
+    //     // var lga = $(this).val();
+    //      console.log(index)
+    //     $.each(statesAndCapitals[0].index, function() {
+    //         console.log(i)
+    //     });
+    
+    // });
 })
 
 
@@ -86,3 +92,40 @@ $().ready(function () {
     })
     $("#formEl").trigger('reset')
 })
+
+
+
+// // Declare some variables
+// const theData = statesData[0]
+// const theStates = Object.keys(theData)
+
+// //console.log(statesData[0].Abia)
+
+
+
+// // Manipulate DOM
+// theStates.forEach(state => {
+//     $("#state-el").append(`<option>${state}</option>`)
+// })
+
+// //$("#state-el").on("change", getSelectedOpt)
+// $("#state-el").on("change", function(){
+//     let selState = this.selectedOptions[0].value
+//     populateLga(selState)
+// }  )
+
+
+
+// function getSelectedOpt(){
+//     console.log(this.selectedOptions[0].value)
+// }
+
+// function populateLga(selState){
+//     $("#lg-el").html(`<option selected>Choose LG</option>`)
+//     let lgArr = []
+//     lgArr = statesData[0][selState]
+//     lgArr.forEach(lg => {
+//         $("#lg-el").append(`<option>${lg}</option>`)
+//     })
+    
+// }
